@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="11%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0px"
+    >
+    <Row>
+        <Key android:codes="49" android:keyLabel="ㄅ" android:keyEdgeFlags="left"/>
+        <Key android:codes="50" android:keyLabel="ㄉ"/>
+        <Key android:codes="51" android:keyLabel="ˇ"/>
+        <Key android:codes="52" android:keyLabel="ˋ"/>
+        <Key android:codes="53" android:keyLabel="ㄓ"/>
+        <Key android:codes="54" android:keyLabel="ˊ"/>
+        <Key android:codes="55" android:keyLabel="˙"/>
+        <Key android:codes="56" android:keyLabel="ㄚ"/>
+        <Key android:codes="57" android:keyLabel="ㄞ"/>
+        <Key android:codes="48" android:keyLabel="ㄢ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="81" android:keyLabel="ㄆ" android:keyEdgeFlags="left"/>
+        <Key android:codes="87" android:keyLabel="ㄊ"/>
+        <Key android:codes="69" android:keyLabel="ㄍ"/>
+        <Key android:codes="82" android:keyLabel="ㄐ"/>
+        <Key android:codes="84" android:keyLabel="ㄔ"/>
+        <Key android:codes="89" android:keyLabel="ㄗ"/>
+        <Key android:codes="85" android:keyLabel="ㄧ"/>
+        <Key android:codes="73" android:keyLabel="ㄛ"/>
+        <Key android:codes="79" android:keyLabel="ㄟ"/>
+        <Key android:codes="80" android:keyLabel="ㄣ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="65" android:keyLabel="ㄇ" android:keyEdgeFlags="left"/>
+        <Key android:codes="83" android:keyLabel="ㄋ"/>
+        <Key android:codes="68" android:keyLabel="ㄎ"/>
+        <Key android:codes="70" android:keyLabel="ㄑ"/>
+        <Key android:codes="71" android:keyLabel="ㄕ"/>
+        <Key android:codes="72" android:keyLabel="ㄘ"/>
+        <Key android:codes="74" android:keyLabel="ㄨ"/>
+        <Key android:codes="75" android:keyLabel="ㄜ"/>
+        <Key android:codes="76" android:keyLabel="ㄠ"/>
+        <Key android:codes="59" android:keyLabel="ㄤ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="90" android:keyLabel="ㄈ" android:keyEdgeFlags="left"/>
+        <Key android:codes="88" android:keyLabel="ㄌ"/>
+        <Key android:codes="67" android:keyLabel="ㄏ"/>
+        <Key android:codes="86" android:keyLabel="ㄒ"/>
+        <Key android:codes="66" android:keyLabel="ㄖ"/>
+        <Key android:codes="78" android:keyLabel="ㄙ"/>
+        <Key android:codes="77" android:keyLabel="ㄩ"/>
+        <Key android:codes="44" android:keyLabel="ㄝ"/>
+        <Key android:codes="46" android:keyLabel="ㄡ"/>
+        <Key android:codes="47" android:keyLabel="ㄥ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="-1" android:keyLabel="Tab"
+            android:keyWidth="3%p" android:isModifier="true"
+            android:isSticky="true" android:keyEdgeFlags="left"/>
+        <Key android:codes="32" android:keyLabel="Space" />
+        <Key android:codes="8" android:keyLabel="Delete"
+            android:keyWidth="3%p" android:keyEdgeFlags="right"
+            android:isRepeatable="true"/>
+    </Row>
+
+
+</Keyboard>

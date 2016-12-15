@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BopomofoToEnglish</string>
+    <string name="bopomofo_to_eng">Bopomofo To English</string>
 </resources>

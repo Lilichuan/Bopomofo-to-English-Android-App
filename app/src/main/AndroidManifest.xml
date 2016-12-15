@@ -8,6 +8,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <service android:name=".TransImService"
+            android:label="@string/bopomofo_to_eng"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+
     </application>
 
 </manifest>
