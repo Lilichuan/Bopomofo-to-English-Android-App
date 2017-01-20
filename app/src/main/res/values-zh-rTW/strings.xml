@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="bopomofo_to_eng">注音轉英打</string>
+    <string name="label_subtype">注音轉英打</string>
 </resources>

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BopomofoToEnglish</string>
     <string name="bopomofo_to_eng">Bopomofo To English</string>
+    <string name="label_subtype">Zuyin To Eng</string>
 </resources>

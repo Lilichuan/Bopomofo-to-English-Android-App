@@ -1,11 +1,16 @@
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
-    android:settingsActivity="com.example.android.softkeyboard.ImePreferences"
+    android:settingsActivity="com.taiwanandroidapp.tim.bopomofotoenglish.UI"
     >
+    <subtype
+        android:label="@string/label_subtype"
+        android:imeSubtypeLocale="zh_TW"
+        android:imeSubtypeMode="keyboard" />
+
     <!--<subtype-->
-        <!--android:label="@string/label_subtype_generic"-->
-        <!--android:icon="@drawable/icon_en_us"-->
+        <!--android:label="@string/label_subtype"-->
         <!--android:imeSubtypeLocale="en_US"-->
         <!--android:imeSubtypeMode="keyboard" />-->
+
     <!--<subtype-->
         <!--android:label="@string/label_subtype_en_GB"-->
         <!--android:icon="@drawable/icon_en_gb"-->
