@@ -14,10 +14,13 @@ import com.taiwanandroidapp.tim.bopomofotoenglish.UI.MyKeyboardView;
 
 public class TransImService extends InputMethodService {
 
-    private final int KEYBOARD_NORNAL = 1;
+    private final int KEYBOARD_NORMAL = 1;
     private final int KEYBOARD_UPPER = 2;
 
-    private Keyboard bopomofo_keyboard;
+    private int now_keyboard = KEYBOARD_NORMAL;
+
+    private KeyboardView keyboardView;
+
 
     @Override
     public void onCreate() {
@@ -28,27 +31,33 @@ public class TransImService extends InputMethodService {
     public void onInitializeInterface() {
         super.onInitializeInterface();
 
-        bopomofo_keyboard = new Keyboard(this,R.xml.bopomofo_keys);
-
     }
 
     private void changeKeyboard(int keyboard_code){
-        Keyboard keyboard;
 
-        if(keyboard_code == KEYBOARD_NORNAL){
-            keyboard = new Keyboard(this,R.xml.bopomofo_keys);
-        }else {
-            keyboard = new Keyboard(this,R.xml.bopomofo_keys_uppercase);
+        if(keyboard_code == now_keyboard){
+            return;
         }
 
+        now_keyboard = keyboard_code;
 
+        Keyboard m_keyboard;
+
+        if(keyboard_code == KEYBOARD_NORMAL){
+            m_keyboard = new Keyboard(this,R.xml.bopomofo_keys);
+        }else {
+            m_keyboard = new Keyboard(this,R.xml.bopomofo_keys_uppercase);
+        }
+
+        keyboardView.setKeyboard(m_keyboard);
+        keyboardView.invalidateAllKeys();
     }
 
     @Override
     public View onCreateInputView() {
-        KeyboardView view = (KeyboardView) getLayoutInflater().inflate(R.layout.my_keyboard_view, null, false);
-        view.setKeyboard(bopomofo_keyboard);
-        view.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+        keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.my_keyboard_view, null, false);
+        keyboardView.setKeyboard(new Keyboard(this,R.xml.bopomofo_keys));
+        keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void onPress(int i) {
 
@@ -72,7 +81,7 @@ public class TransImService extends InputMethodService {
                         changeKeyboard(KEYBOARD_UPPER);
                         break;
                     case -2:
-                        changeKeyboard(KEYBOARD_NORNAL);
+                        changeKeyboard(KEYBOARD_NORMAL);
                         break;
                     default:
                         getCurrentInputConnection().commitText(String.valueOf((char) i), 1);
@@ -106,6 +115,20 @@ public class TransImService extends InputMethodService {
             }
         });
 
-        return view;
+        return keyboardView;
     }
+
+//    private int changeChar(int original_char){
+//        if(now_keyboard == KEYBOARD_NORMAL){
+//            return original_char;
+//        }
+//
+//        if(original_char >= 97 && original_char <= 122 ){
+//            return original_char + 32;
+//        }
+//
+//        switch (original_char){
+//
+//        }
+//    }
 }
