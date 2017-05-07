@@ -1,12 +1,13 @@
 package com.taiwanandroidapp.tim.bopomofotoenglish;
 
-import android.graphics.BitmapRegionDecoder;
+import android.app.Dialog;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.IBinder;
 import android.view.View;
-
-import com.taiwanandroidapp.tim.bopomofotoenglish.UI.MyKeyboardView;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by tim on 2016/12/15.
@@ -16,6 +17,13 @@ public class TransImService extends InputMethodService {
 
     private final int KEYBOARD_NORMAL = 1;
     private final int KEYBOARD_UPPER = 2;
+
+    // define in bopomofo_keys.xml and bopomofo_keys_uppercase.xml
+    private final int SIGNAL_TO_UPPER = -1;
+    private final int SIGNAL_TO_NORMAL = -2;
+    private final int SIGNAL_DELETE = 8;
+    private final int SIGNAL_CHANGE_IME = -101;
+    private final int SIGNAL_HIDE_KEYBOARD = -3;
 
     private int now_keyboard = KEYBOARD_NORMAL;
 
@@ -71,17 +79,26 @@ public class TransImService extends InputMethodService {
             @Override
             public void onKey(int i, int[] ints) {
 
+                InputMethodManager mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+
+
                 switch (i){
-                    case 8:
-                        // define in bopomofo_keys.xml
-                        // 8 is delete key signal
+                    case SIGNAL_DELETE:
                         getCurrentInputConnection().deleteSurroundingText(1,0);
                         break;
-                    case -1:
+                    case SIGNAL_TO_UPPER:
                         changeKeyboard(KEYBOARD_UPPER);
                         break;
-                    case -2:
+                    case SIGNAL_TO_NORMAL:
                         changeKeyboard(KEYBOARD_NORMAL);
+                        break;
+                    case SIGNAL_CHANGE_IME:
+                        //mInputMethodManager.switchToNextInputMethod(getToken(), false);
+                        mInputMethodManager.showInputMethodPicker();
+                        break;
+                    case SIGNAL_HIDE_KEYBOARD:
+                        mInputMethodManager.hideSoftInputFromInputMethod(getToken(), 0);
+                        //mInputMethodManager.showInputMethodPicker();
                         break;
                     default:
                         getCurrentInputConnection().commitText(String.valueOf((char) i), 1);
@@ -116,6 +133,18 @@ public class TransImService extends InputMethodService {
         });
 
         return keyboardView;
+    }
+
+    private IBinder getToken() {
+        final Dialog dialog = getWindow();
+        if (dialog == null) {
+            return null;
+        }
+        final Window window = dialog.getWindow();
+        if (window == null) {
+            return null;
+        }
+        return window.getAttributes().token;
     }
 
 //    private int changeChar(int original_char){
